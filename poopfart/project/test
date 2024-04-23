@@ -1,0 +1,64 @@
+#!/usr/bin/env pybricks-micropython
+#from pybricks.hubs import EV3Brick
+#from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
+ #                                InfraredSensor, UltrasonicSensor, GyroSensor)
+#from pybricks.parameters import Port, Stop, Direction, Button, Color
+#from pybricks.tools import wait, StopWatch, DataLog
+#from pybricks.robotics import DriveBase
+#from pybricks.media.ev3dev import SoundFile, ImageFile
+
+# Modules to Import
+#!/usr/bin/env pybricks-micropython
+# Modules to Import
+#!/usr/bin/env pybricks-micropython
+from pybricks.media.ev3dev import Image, ImageFile
+from pybricks.ev3devices import Motor, ColorSensor
+from pybricks.nxtdevices import UltrasonicSensor, TouchSensor, LightSensor
+from pybricks.parameters import Port, Color, Stop
+from pybricks.tools import wait, StopWatch, DataLog
+from pybricks.robotics import DriveBase
+import time
+POSSIBLE_COLORS = [Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.BLACK]
+# Objects to Build
+#light sensor to determine if goal is not guarded
+#motors to drive
+left = Motor(Port.B)
+right = Motor(Port.A)
+ultraSonic = UltrasonicSensor(Port.S3)
+light = ColorSensor(Port.S2)
+puck = Motor(Port.C)
+robot_drive = DriveBase(left, right, 100, 22)
+
+print("uh d")
+ev3_img = Image(erm.png)
+ev3 = EV3Brick()
+ev3.screen.load_image(ev3_img)
+time.sleep(1234567)
+
+
+robot_drive.straight() 
+color = light.color
+while(color==Color.WHITE):
+    robot_drive.straight(-20)#small amoubt
+    color=light.color
+#
+robot_drive.straight(-20) # get it a little behind the line
+robot.drive.turn(-200)
+
+color = light.color
+while(color ==Color.WHITE)
+    robot_drive.turn(20)# turn a little bit to the left to get on track
+
+
+low = 34.9
+high = 54.6
+midpoint = (high + low) / 2
+PROPORTIONAL_GAIN = 1.2
+
+#line following
+for x in range(20):
+    deviation = light.reflection()-midpoint
+    turn_rate = PROPORTIONAL_GAIN * deviation
+    robot_drive.straight(100,turn_rate)
+    wait(2)
+
